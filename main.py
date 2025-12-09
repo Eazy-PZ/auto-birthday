@@ -21,7 +21,7 @@ load_dotenv('day32/.env')
 EMAIL = os.getenv('email')
 PASSWORD = os.getenv('password')
 
-birthday_file = pd.read_csv('day32/birthday-wisher-extrahard-start/birthdays.csv')
+birthday_file = pd.read_csv('birthdays.csv')
 now = dt.datetime.now()
 year, month, day = now.year, now.month, now.day
 
