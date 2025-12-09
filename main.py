@@ -16,7 +16,7 @@ import smtplib
 import os
 from dotenv import load_dotenv
 
-load_dotenv('day32/.env')
+load_dotenv('.env')
 
 EMAIL = os.getenv('email')
 PASSWORD = os.getenv('password')
@@ -33,15 +33,15 @@ for name in birthday_info:
         print('hey')
 
         PLACEHOLDER = "[NAME]"
-        letter1 = 'day32/birthday-wisher-extrahard-start/letter_templates/letter_1.txt'
-        letter2 = 'day32/birthday-wisher-extrahard-start/letter_templates/letter_2.txt'
-        letter3 = 'day32/birthday-wisher-extrahard-start/letter_templates/letter_3.txt'
+        letter1 = 'letter_1.txt'
+        letter2 = 'letter_2.txt'
+        letter3 = 'letter_3.txt'
 
 
         with open(random.choice([letter1, letter2, letter3])) as letter_file:
             letter_contents = letter_file.read()
             new_letter = letter_contents.replace(PLACEHOLDER, name)
-            with open(f"day32/birthday-wisher-extrahard-start/letter_for_{name}.txt", mode="w") as completed_letter:
+            with open(f"letter_for_{name}.txt", mode="w") as completed_letter:
                 completed_letter.write(new_letter)
 
 
@@ -49,4 +49,4 @@ for name in birthday_info:
         
         with smtplib.SMTP_SSL(os.getenv('smtp'), os.getenv('port')) as connection:
             connection.login(EMAIL, PASSWORD)
-            connection.sendmail(EMAIL, "examplemail@gmail.com", message)
+            connection.sendmail(EMAIL, "examplemail@mail.com", message)
